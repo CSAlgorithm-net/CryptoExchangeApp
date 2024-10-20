@@ -1,17 +1,29 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 public class ExchangeApiClient
 {
     private static readonly HttpClient _httpClient = new HttpClient();
 
-    // Method to get market price for a given symbol
+
+    public class MarketPriceResponse
+    {
+        public string Symbol { get; set; }
+        public decimal Price { get; set; }
+    }
+
     public async Task<string> GetMarketDataAsync(string symbol)
     {
         var url = $"https://api.binance.com/api/v3/ticker/price?symbol={symbol}";
         var response = await _httpClient.GetAsync(url);
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadAsStringAsync();
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+
+        // Deserialize the JSON response
+        var marketData = JsonConvert.DeserializeObject<MarketPriceResponse>(jsonResponse);
+
+        // Format the output
+        return $"{marketData.Symbol}: {marketData.Price:F2}"; // F2 for two decimal places
     }
+
 }

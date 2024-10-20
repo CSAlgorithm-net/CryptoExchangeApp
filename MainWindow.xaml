@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoExchangeApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CryptoExchangeApp" Height="450" Width="800">
     <Grid>
         <Button x:Name="GetPriceButton" Content="Get BTC Price" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="40" Click="GetPriceButton_Click"/>
         <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" Width="500" Height="40"/>

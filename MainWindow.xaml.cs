@@ -1,13 +1,4 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace CryptoExchangeApp
 {
@@ -28,14 +19,15 @@ namespace CryptoExchangeApp
         {
             try
             {
-                var symbol = "BTCUSDT";  // Example for Bitcoin to USDT
+                var symbol = "BTCUSDT"; // Example for the Bitcoin/USDT pair
                 var price = await _apiClient.GetMarketDataAsync(symbol);
-                PriceTextBox.Text = price;  // Display the price in the TextBox
+                PriceTextBox.Text = price; // Display the price in the TextBox in the new format
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
+
     }
 }
